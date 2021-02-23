@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views import generic
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from django.utils.safestring import mark_safe
+import calendar
 
 from .models import Event
 from .my_calendar import Calendar
@@ -15,6 +16,19 @@ def get_date(request):
     return datetime.today()
 
 
+def previous_month(date):
+    first_day = date.replace(day=1)
+    month_prev = first_day - timedelta(days=1)
+    return 'month=' + str(month_prev.year) + '-' + str(month_prev.month)
+
+
+def next_month(date):
+    days = calendar.monthrange(date.year, date.month)[1]
+    last_day = date.replace(day=days)
+    month_prev = last_day + timedelta(days=1)
+    return 'month=' + str(month_prev.year) + '-' + str(month_prev.month)
+
+
 class ViewCalendar(generic.ListView):
     model = Event
     template_name = 'calendarapp/calendarapp.html'
@@ -25,4 +39,6 @@ class ViewCalendar(generic.ListView):
         calendar_instance = Calendar(date_today.year, date_today.month)
         html_calendar = calendar_instance.formatmonth(year=True)
         context['calendar'] = mark_safe(html_calendar)
+        context['luna_anterioara'] = previous_month(date_today)
+        context['luna_viitoare'] = next_month(date_today)
         return context

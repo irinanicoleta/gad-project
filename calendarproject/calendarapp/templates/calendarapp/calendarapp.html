@@ -1,5 +1,48 @@
 {% extends 'calendarapp/base.html' %}
 
+{% block title %}
+Calendar
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        background-color: powderblue;
+        color: black;
+    }
+    .title {
+        font-family: Bahnschrift, serif;
+        text-align: center;
+        margin: 10px;
+    }
+    .calendar {
+        margin: auto;
+        font-size: 15px;
+        font-weight: bold;
+        width: 95%;
+    }
+    .calendar tr, .calendar td {
+        border: 2px solid black;
+    }
+    .calendar td {
+        height: 150px;
+        width: 150px;
+        padding: 20px 0 0 5px;
+    }
+    .month {
+        font-size: 22px;
+        font-width: bold;
+    }
+    ul {
+        height: 95%;
+        padding: 0 5px 0 20px;
+    }
+    a {
+        color: darkblue;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 {{ calendar }}
 {% endblock %}

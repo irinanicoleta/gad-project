@@ -3,15 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% block style %}
+    {% endblock %}
     <title>Calendar App</title>
 </head>
 <body>
+    <h1 class="title">{% block title %}{% endblock %}</h1>
 
     {% block content %}
     {% endblock %}
-
-    {% block script %}
-    {% endblock %}
-
 </body>
 </html>
