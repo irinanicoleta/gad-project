@@ -7,13 +7,14 @@ Calendar
 {% block style %}
 <style>
     body {
-        background-color: powderblue;
-        color: black;
+        background-color: #EAE2B7;
+        color: #D62828;
+        font-family: Perpetua,serif;
     }
     .title {
-        font-family: Bahnschrift, serif;
         text-align: center;
         margin: 10px;
+        color: #003049;
     }
     .calendar {
         margin: auto;
@@ -22,7 +23,7 @@ Calendar
         width: 95%;
     }
     .calendar tr, .calendar td {
-        border: 2px solid black;
+        border: 2px solid #003049;
     }
     .calendar td {
         height: 150px;
@@ -37,12 +38,40 @@ Calendar
         height: 95%;
         padding: 0 5px 0 20px;
     }
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+    .btn {
+        background-color: #FCBF49;
+        color: #003049;
+        border: 2px solid #003049;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+    .btn:hover {
+        background-color: #EAE2B7;
+    }
+    .clearfix {
+        margin: 15px;
+    }
     a {
-        color: darkblue;
+        color: #F77F00;
+        text-decoration: none;
     }
 </style>
 {% endblock %}
 
 {% block content %}
+<div class="clearfix">
+    <a class="btn btn-info left" href="{% url 'calendarapp:calendar' %}?{{ previous_month }}"> Previous month </a>
+    <a class="btn btn-info right" href="{% url 'calendarapp:calendar' %}?{{ next_month }}"> Next month </a>
+    <a class="btn btn-info right" href="{% url 'calendarapp:new_event' %}"> New event </a>
+</div>
 {{ calendar }}
 {% endblock %}

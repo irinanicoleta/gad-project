@@ -1,4 +1,3 @@
-from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from .models import Event
 
@@ -13,7 +12,7 @@ class Calendar(HTMLCalendar):
         this_day_events = events.filter(start_time__day=day)
         html_day = ''
         for event in this_day_events:
-            html_day += f'<li> {event.title} </li>'
+            html_day += f'<li> {event.get_url_html} </li>'
 
         if day == 0:
             return '<td></td>'

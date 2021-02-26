@@ -1,0 +1,61 @@
+{% extends 'calendarapp/base.html' %}
+
+{% block title %}
+Event
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        background-color: #EAE2B7;
+        color: #D62828;
+        font-family: Perpetua,serif;
+    }
+    .title {
+        text-align: center;
+        margin: 10px;
+    }
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+    .form {
+        margin: auto;
+    }
+    .btn {
+        background-color: #FCBF49;
+        color: #003049;
+        border: 2px solid #003049;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .btn:hover {
+        background-color: #EAE2B7;
+    }
+    .clearfix {
+        margin: 15px;
+    }
+    a {
+        color: darkblue;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="clearfix">
+    <a class="btn btn-info left" href="{% url 'calendarapp:calendar' %}"> Calendar </a>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <table class="form form-table">
+        {{ form }}
+        <tr><td colspan="2"><button type="submit" name="submit" class="btn btn-info right"> Submit </button></td></tr>
+        <tr><td colspan="2"><button type="submit" name="delete" class="btn btn-danger right"> Delete </button></td></tr>
+    </table>
+</form>
+{% endblock %}
