@@ -69,8 +69,11 @@ Calendar
 
 {% block content %}
 <div class="clearfix">
+<!--    Buton care face trimitere la luna anterioara -->
     <a class="btn btn-info left" href="{% url 'calendarapp:calendar' %}?{{ previous_month }}"> Previous month </a>
+<!--    Buton care face trimitere la luna urmatoare -->
     <a class="btn btn-info right" href="{% url 'calendarapp:calendar' %}?{{ next_month }}"> Next month </a>
+<!--    Buton care trimite la formularul de adaugare a unui eveniment -->
     <a class="btn btn-info right" href="{% url 'calendarapp:new_event' %}"> New event </a>
 </div>
 {{ calendar }}
